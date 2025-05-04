@@ -141,32 +141,41 @@ export default function Home() {
           </div>
         );
       case 'samples':
-        return (
+  return (
           <div style={{
             width: '90%',
             maxWidth: 1400,
-            background: 'rgba(0,0,0,0.7)',
+            background: 'rgba(0,0,0,0.85)',
             color: 'white',
             padding: 32,
             borderRadius: 16,
             boxShadow: '0 4px 32px rgba(0,0,0,0.3)',
             position: 'relative',
-            minHeight: '600px', // Ensure minimum height matches info page
+            minHeight: '600px',
             display: 'flex',
             flexDirection: 'column'
           }}>
-            {!selectedPack ? (
-              // Grid view of sample packs
-              <>
-                <h2 style={{ 
-                  textAlign: 'center', 
-                  marginBottom: 32, 
-                  fontSize: '28px'
-                }}>
-                  Sample Packs
-                </h2>
+            {/* Only show this title in the list view */}
+            {!selectedPack && (
+              <h2
+                style={{
+                  textAlign: 'center',
+                  fontSize: '36px',
+                  fontWeight: 900,
+                  letterSpacing: 2,
+                  lineHeight: 1.1,
+                  width: '100%',
+                  margin: 0,
+                  marginBottom: '40px'
+                }}
+              >
+                Sample Packs
+              </h2>
+            )}
 
-                <div style={{
+            {!selectedPack ? (
+              <div
+                style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
                   gap: '20px',
@@ -174,43 +183,71 @@ export default function Home() {
                   width: '100%', // Use full width
                   flex: 1, // Take up remaining space
                   alignContent: 'start', // Align grid to top
-                }}>
-                  {samplePacks.map(pack => (
-                    <div 
-                      key={pack.id}
-                      onClick={() => setSelectedPack(pack.id)}
+                }}
+              >
+                {samplePacks.map(pack => (
+                  <div
+                    key={pack.id}
+                    style={{
+                      cursor: 'pointer',
+                      transition: 'transform 0.2s',
+                      width: '150px',
+                      margin: '0 auto',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}
+                  >
+                    {/* Sample pack name above the image */}
+                    <div
                       style={{
-                        cursor: 'pointer',
-                        transition: 'transform 0.2s',
-                        width: '150px', // Fixed width
-                        margin: '0 auto', // Center in grid cell
-                        ':hover': {
-                          transform: 'scale(1.05)'
-                        }
+                        fontSize: '16px',
+                        fontWeight: 700,
+                        marginBottom: '8px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        whiteSpace: 'nowrap',
+                        textAlign: 'center',
                       }}
                     >
-                      <img
-                        src={pack.image}
-                        alt={pack.title}
-                        style={{
-                          width: '100%',
-                          height: 'auto',
-                          borderRadius: 12,
-                          marginBottom: 8,
-                          boxShadow: '0 4px 24px rgba(0,0,0,0.4)'
-                        }}
-                      />
-                      <h3 style={{ 
-                        textAlign: 'center',
-                        fontSize: '16px',
-                        marginBottom: '4px'
-                      }}>
-                        {pack.title}
-                      </h3>
+                      {pack.title}
                     </div>
-                  ))}
-                </div>
-              </>
+                    <img
+                      src={pack.image}
+                      alt={pack.title}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        borderRadius: 12,
+                        marginBottom: 8,
+                        boxShadow: '0 4px 24px rgba(0,0,0,0.4)'
+                      }}
+                    />
+                    {/* Free Download button under the image */}
+                    <button
+                      onClick={() => setSelectedPack(pack.id)}
+                      style={{
+                        marginTop: 8,
+                        padding: '8px 20px',
+                        borderRadius: 20,
+                        border: 'none',
+                        background: '#4C858A',
+                        color: 'white',
+                        fontWeight: 700,
+                        fontSize: '15px',
+                        cursor: 'pointer',
+                        textTransform: 'uppercase',
+                        letterSpacing: 1,
+                        boxShadow: '0 2px 4px rgba(0,0,0,0.15)',
+                        transition: 'background 0.2s',
+                      }}
+                    >
+                      FREE
+                    </button>
+                  </div>
+                ))}
+              </div>
             ) : (
               // Detailed view (replaces grid view when pack is selected)
               <>
@@ -272,12 +309,31 @@ export default function Home() {
                     lineHeight: '1.6',
                     maxWidth: '800px'
                   }}>
-                    <h2 style={{ marginBottom: '20px' }}>Cinematic Atmospheres</h2>
-                    <p style={{ marginBottom: '20px' }}>
-                      {samplePacks[0].description.main}
+                    <h2
+                      style={{
+                        textAlign: 'center',
+                        fontSize: '34px',
+                        fontWeight: 900,
+                        letterSpacing: 2,
+                        lineHeight: 1.1,
+                        width: '100%',
+                        margin: 0,
+                        marginBottom: '40px'
+                      }}
+                    >
+                      Cinematic Atmospheres
+                    </h2>
+                    <p style={{
+                      fontWeight: 400,
+                      marginBottom: '10px',
+                    }}>
+                      Step into a world of depth, emotion, and tension with Cinematic Atmospheres, a meticulously crafted sample pack designed for film scoring, game soundtracks, ambient music, and atmospheric productions.
                     </p>
-                    <p style={{ marginBottom: '20px' }}>
-                      {samplePacks[0].description.secondary}
+                    <p style={{
+                      fontWeight: 400,
+                      marginBottom: '20px',
+                    }}>
+                      Every sound is professionally designed to spark creativity, offering both warmth and edge. Whether you're building an expansive movie score, an eerie game level, or a dreamy ambient track, Cinematic Atmospheres gives you the tools to shape unforgettable sonic worlds.
                     </p>
 
                     <div style={{ marginBottom: '20px' }}>
@@ -517,7 +573,7 @@ export default function Home() {
         textTransform: 'uppercase'
       }}>
         Mythic Soundlab
-      </div>
+        </div>
 
       {/* Navigation Menu - Adjusted to match content area exactly */}
       <div style={{
