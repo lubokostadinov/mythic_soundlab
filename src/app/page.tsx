@@ -16,6 +16,8 @@ const COVER_IMAGE_URL = 'https://grxandvmphfzepoqtbtp.supabase.co/storage/v1/obj
 const orbitronFontUrl = 'https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap';
 const poppinsFontUrl = 'https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap';
 const greatVibesFontUrl = 'https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap';
+const montserratFontUrl = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap';
+const ralewayFontUrl = 'https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap';
 
 if (typeof window !== 'undefined') {
   const link = document.createElement('link');
@@ -26,6 +28,12 @@ if (typeof window !== 'undefined') {
   link.rel = 'stylesheet';
   document.head.appendChild(link);
   link.href = greatVibesFontUrl;
+  link.rel = 'stylesheet';
+  document.head.appendChild(link);
+  link.href = montserratFontUrl;
+  link.rel = 'stylesheet';
+  document.head.appendChild(link);
+  link.href = ralewayFontUrl;
   link.rel = 'stylesheet';
   document.head.appendChild(link);
 }
@@ -381,6 +389,20 @@ export default function Home() {
           }}>
             <h2>Free Sample Pack: Mythic Essentials Vol. 1</h2>
             <img
+              src="https://grxandvmphfzepoqtbtp.supabase.co/storage/v1/object/public/sample-packs//mythic_logo_alpha.png"
+              alt="Mythic Soundlab Logo"
+              style={{
+                position: 'absolute',
+                top: -8,      // Keep this for vertical center alignment
+                left: 16,     // Move a little to the right; adjust as needed
+                height: 160,
+                width: 'auto',
+                zIndex: 100,
+                display: 'block',
+                pointerEvents: 'none',
+              }}
+            />
+            <img
               src={COVER_IMAGE_URL}
               alt="Sample Pack Cover"
               style={{
@@ -462,19 +484,37 @@ export default function Home() {
       position: 'relative',
       overflow: 'hidden'
     }}>
+      <img
+        src="https://grxandvmphfzepoqtbtp.supabase.co/storage/v1/object/public/sample-packs//mythic_logo_alpha.png"
+        alt="Mythic Soundlab Logo"
+        style={{
+          position: 'absolute',
+          top: -4,      // Keep this for vertical center alignment
+          left: 0,     // Move a little to the right; adjust as needed
+          height: 160,
+          width: 'auto',
+          zIndex: 100,
+          display: 'block',
+          pointerEvents: 'none',
+        }}
+      />
+
       {/* Company name */}
       <div style={{
         position: 'absolute',
-        top: 32,
+        top: 48,
         right: 48,
-        fontSize: 90,
+        fontSize: 48,
         color: 'white',
+        WebkitTextStroke: '2px black',
         textShadow: '0 4px 24px rgba(0,0,0,0.8)',
         zIndex: 10,
-        fontFamily: "'Great Vibes', cursive",
+        fontFamily: "'Raleway', Arial, sans-serif",
         letterSpacing: 2,
         lineHeight: 1.1,
         userSelect: 'none',
+        fontWeight: 900,
+        textTransform: 'uppercase'
       }}>
         Mythic Soundlab
       </div>
@@ -482,7 +522,7 @@ export default function Home() {
       {/* Navigation Menu - Adjusted to match content area exactly */}
       <div style={{
         position: 'absolute',
-        left: '10vw',  // Increased from 5vw to 8vw to match content area
+        left: 'calc(5vw + 84px)',
         top: 48,
         display: 'flex',
         flexDirection: 'row',
