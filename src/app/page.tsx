@@ -180,9 +180,11 @@ export default function Home() {
                   gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
                   gap: '20px',
                   padding: '20px',
-                  width: '100%', // Use full width
-                  flex: 1, // Take up remaining space
-                  alignContent: 'start', // Align grid to top
+                  width: '100%',
+                  maxWidth: 500,
+                  margin: '0 auto',
+                  flex: 1,
+                  alignContent: 'start',
                 }}
               >
                 {samplePacks.map(pack => (
@@ -221,8 +223,10 @@ export default function Home() {
                         height: 'auto',
                         borderRadius: 12,
                         marginBottom: 8,
-                        boxShadow: '0 4px 24px rgba(0,0,0,0.4)'
+                        boxShadow: '0 4px 24px rgba(0,0,0,0.4)',
+                        cursor: 'pointer',
                       }}
+                      onClick={() => setSelectedPack(pack.id)}
                     />
                     {/* Free Download button under the image */}
                     <button
@@ -247,6 +251,58 @@ export default function Home() {
                     </button>
                   </div>
                 ))}
+
+                {/* Empty slot for "More coming soon" */}
+                <div
+                  style={{
+                    width: '150px',
+                    margin: '0 auto',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    border: 'none',
+                    borderRadius: 12,
+                    padding: '0',
+                    boxSizing: 'border-box',
+                    minHeight: 210,
+                    justifyContent: 'center',
+                    background: 'transparent',
+                    marginTop: '-14px',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '100%',
+                      aspectRatio: '1/1',
+                      border: '2px dashed #fff',
+                      borderRadius: 12,
+                      marginBottom: 8,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: 'transparent',
+                      minHeight: 0,
+                      minWidth: 0,
+                      boxSizing: 'border-box',
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: '#fff',
+                        fontWeight: 700,
+                        fontSize: '15px',
+                        textAlign: 'center',
+                        letterSpacing: 1,
+                        opacity: 1, // Fully white
+                        margin: 0,
+                        padding: 0,
+                        width: '100%',
+                      }}
+                    >
+                      More coming soon
+                    </span>
+                  </div>
+                </div>
               </div>
             ) : (
               // Detailed view (replaces grid view when pack is selected)
