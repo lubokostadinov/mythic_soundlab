@@ -38,6 +38,16 @@ if (typeof window !== 'undefined') {
   document.head.appendChild(link);
 }
 
+function formatTime(seconds: number) {
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${s.toString().padStart(2, '0')}`;
+}
+
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 export default function Home() {
   const [email, setEmail] = useState('');
   const [country, setCountry] = useState('');
@@ -47,6 +57,10 @@ export default function Home() {
   const downloadRef = useRef<HTMLAnchorElement>(null);
   const [currentView, setCurrentView] = useState('samples'); // 'samples', 'about'
   const [selectedPack, setSelectedPack] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audioProgress, setAudioProgress] = useState(0);
+  const [audioDuration, setAudioDuration] = useState(0);
 
   // Get user country automatically
   useEffect(() => {
@@ -63,6 +77,8 @@ export default function Home() {
   useEffect(() => {
     if (submitted && downloadRef.current) {
       downloadRef.current.click();
+      setSubmitted(false);
+      setEmail('');
     }
   }, [submitted]);
 
@@ -71,8 +87,8 @@ export default function Home() {
     setError('');
     setLoading(true);
 
-    if (!email) {
-      setError('Please enter your email.');
+    if (!isValidEmail(email)) {
+      setError('Invalid email');
       setLoading(false);
       return;
     }
@@ -179,10 +195,9 @@ export default function Home() {
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
                   gap: '20px',
-                  padding: '20px',
+                  padding: '20px 0',
                   width: '100%',
-                  maxWidth: 500,
-                  margin: '0 auto',
+                  margin: 0,
                   flex: 1,
                   alignContent: 'start',
                 }}
@@ -307,13 +322,29 @@ export default function Home() {
             ) : (
               // Detailed view (replaces grid view when pack is selected)
               <>
+                {/* Header at the top center */}
+                <h2
+                  style={{
+                    textAlign: 'center',
+                    fontSize: '34px',
+                    fontWeight: 700,
+                    letterSpacing: 2,
+                    lineHeight: 1.1,
+                    width: '100%',
+                    margin: 0,
+                    marginBottom: '0px',
+                    color: '#fff',
+                  }}
+                >
+                  Cinematic Atmospheres
+                </h2>
                 <button
                   onClick={() => setSelectedPack(null)}
                   style={{
                     position: 'absolute',
                     left: '20px',
                     top: '20px',
-                    padding: '8px 16px',
+                    padding: '8px 16px 8px 8px',
                     borderRadius: 25,
                     border: 'none',
                     background: '#F4F1EE',
@@ -321,16 +352,31 @@ export default function Home() {
                     fontWeight: 'bold',
                     cursor: 'pointer',
                     fontSize: '14px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
                   }}
                 >
-                  ← Back
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      width: 0,
+                      height: 0,
+                      borderTop: '7px solid transparent',
+                      borderBottom: '7px solid transparent',
+                      borderRight: '10px solid #222',
+                      marginRight: 2,
+                    }}
+                  />
+                  Back
                 </button>
 
                 <div style={{
                   display: 'flex',
                   gap: '48px',
-                  alignItems: 'flex-start',
-                  marginTop: '40px' // Add space for back button
+                  alignItems: 'center',
+                  marginTop: '40px',
+                  width: '100%',
                 }}>
                   {/* Left side - Image and Audio Player */}
                   <div style={{
@@ -348,46 +394,115 @@ export default function Home() {
                         boxShadow: '0 4px 24px rgba(0,0,0,0.4)'
                       }}
                     />
-                    <audio controls style={{ 
-                      width: '100%', 
-                      marginBottom: 16 
-                    }}>
-                      <source src={DEMO_AUDIO_URL} type="audio/mpeg" />
-                      Your browser does not support the audio element.
-                    </audio>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <button
+                          onClick={() => {
+                            if (!audioRef.current) return;
+                            if (isPlaying) {
+                              audioRef.current.pause();
+                            } else {
+                              audioRef.current.play();
+                            }
+                            setIsPlaying(!isPlaying);
+                          }}
+                          style={{
+                            background: '#4C858A',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: 20,
+                            width: 56,
+                            height: 32,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontSize: 22,
+                            fontWeight: 700,
+                            cursor: 'pointer',
+                            transition: 'background 0.2s',
+                            padding: 0,
+                            outline: 'none',
+                          }}
+                          aria-label={isPlaying ? 'Pause' : 'Play'}
+                        >
+                          {isPlaying ? (
+                            <span style={{ fontSize: 22, display: 'inline-block' }}>⏸</span>
+                          ) : (
+                            <span
+                              style={{
+                                display: 'inline-block',
+                                width: 0,
+                                height: 0,
+                                borderTop: '7px solid transparent',
+                                borderBottom: '7px solid transparent',
+                                borderLeft: '10px solid white',
+                                marginLeft: 2,
+                              }}
+                            />
+                          )}
+                        </button>
+                        <span style={{ color: '#fff', fontSize: 14 }}>
+                          {formatTime(audioProgress)} / {formatTime(audioDuration)}
+                        </span>
+                      </div>
+                      {/* Progress bar */}
+                      <input
+                        type="range"
+                        min={0}
+                        max={audioDuration}
+                        value={audioProgress}
+                        onChange={e => {
+                          const value = Number(e.target.value);
+                          setAudioProgress(value);
+                          if (audioRef.current) {
+                            audioRef.current.currentTime = value;
+                          }
+                        }}
+                        style={{
+                          width: '100%',
+                          accentColor: '#4C858A',
+                          cursor: 'pointer',
+                        }}
+                      />
+                      <audio
+                        ref={audioRef}
+                        src={DEMO_AUDIO_URL}
+                        style={{ width: 0, height: 0, visibility: 'hidden' }}
+                        onEnded={() => {
+                          setIsPlaying(false);
+                          setAudioProgress(0);
+                        }}
+                        onTimeUpdate={() => {
+                          if (audioRef.current) setAudioProgress(audioRef.current.currentTime);
+                        }}
+                        onLoadedMetadata={() => {
+                          if (audioRef.current) setAudioDuration(audioRef.current.duration);
+                        }}
+                      />
+                    </div>
                   </div>
 
                   {/* Right side - Description */}
                   <div style={{
                     flex: 1,
                     textAlign: 'left',
+                    color: '#e0e0e0',
                     fontSize: '16px',
-                    lineHeight: '1.6',
-                    maxWidth: '800px'
+                    lineHeight: '1.7',
+                    maxWidth: '800px',
+                    fontWeight: 400,
                   }}>
-                    <h2
-                      style={{
-                        textAlign: 'center',
-                        fontSize: '34px',
-                        fontWeight: 900,
-                        letterSpacing: 2,
-                        lineHeight: 1.1,
-                        width: '100%',
-                        margin: 0,
-                        marginBottom: '40px'
-                      }}
-                    >
-                      Cinematic Atmospheres
-                    </h2>
                     <p style={{
                       fontWeight: 400,
                       marginBottom: '10px',
+                      color: '#e0e0e0',
                     }}>
                       Step into a world of depth, emotion, and tension with Cinematic Atmospheres, a meticulously crafted sample pack designed for film scoring, game soundtracks, ambient music, and atmospheric productions.
                     </p>
                     <p style={{
                       fontWeight: 400,
                       marginBottom: '20px',
+                      color: '#e0e0e0',
                     }}>
                       Every sound is professionally designed to spark creativity, offering both warmth and edge. Whether you're building an expansive movie score, an eerie game level, or a dreamy ambient track, Cinematic Atmospheres gives you the tools to shape unforgettable sonic worlds.
                     </p>
@@ -409,7 +524,16 @@ export default function Home() {
                         gap: '8px'
                       }}>
                         {samplePacks[0].description.features.map((feature, index) => (
-                          <li key={index}>• {feature}</li>
+                          <li
+                            key={index}
+                            style={
+                              (feature === '20 haunting drones' || feature === '20 unique FX sounds')
+                                ? { marginLeft: '-64px' }
+                                : undefined
+                            }
+                          >
+                            • {feature}
+                          </li>
                         ))}
                       </ul>
                     </div>
@@ -430,56 +554,47 @@ export default function Home() {
 
                     {/* Email Form */}
                     <div style={{ marginTop: '32px' }}>
-                      {!submitted ? (
-                        <form onSubmit={handleSubmit}>
-                          <input
-                            type="email"
-                            placeholder="Your email"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                            required
-                            style={{
-                              width: '60%',
-                              padding: '8px 16px',
-                              borderRadius: 25,
-                              border: 'none',
-                              marginRight: '12px'
-                            }}
-                          />
-                          <button
-                            type="submit"
-                            style={{
-                              padding: '8px 24px',
-                              borderRadius: 25,
-                              border: 'none',
-                              background: '#4C858A',
-                              color: 'white',
-                              fontWeight: 'bold',
-                              cursor: 'pointer'
-                            }}
-                            disabled={loading}
-                          >
-                            {loading ? 'Submitting...' : 'Download'}
-                          </button>
-                        </form>
-                      ) : (
-                        <div>
-                          <h3 style={{ color: '#F4F1EE', marginBottom: '12px' }}>Thank you!</h3>
-                          <a href={SAMPLE_PACK_URL} download>
-                            <button style={{
-                              padding: '8px 24px',
-                              borderRadius: 25,
-                              border: 'none',
-                              background: '#4C858A',
-                              color: 'white',
-                              fontWeight: 'bold',
-                              cursor: 'pointer'
-                            }}>
-                              Download
-                            </button>
-                          </a>
-                        </div>
-                      )}
+                      <form onSubmit={handleSubmit}>
+                        <input
+                          type="text"
+                          placeholder="Your email"
+                          value={email}
+                          onChange={e => setEmail(e.target.value)}
+                          required
+                          style={{
+                            width: '60%',
+                            padding: '8px 16px',
+                            borderRadius: 25,
+                            border: 'none',
+                            marginRight: '12px'
+                          }}
+                        />
+                        <button
+                          type="submit"
+                          style={{
+                            padding: '8px 24px',
+                            borderRadius: 25,
+                            border: 'none',
+                            background: '#4C858A',
+                            color: 'white',
+                            fontWeight: 'bold',
+                            cursor: 'pointer'
+                          }}
+                          disabled={loading}
+                        >
+                          Download
+                        </button>
+                        {/* Hidden download link for auto-download */}
+                        <a
+                          href={SAMPLE_PACK_URL}
+                          download
+                          ref={downloadRef}
+                          style={{ display: 'none' }}
+                        >
+                          Download Sample Pack
+                        </a>
+                        {error && <div style={{ color: 'red', marginTop: 8 }}>{error}</div>}
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -531,57 +646,24 @@ export default function Home() {
               Your browser does not support the audio element.
             </audio>
             <p>Enter your email to get the free download:</p>
-            {!submitted ? (
-              <form onSubmit={handleSubmit}>
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  required
-                  style={{ width: '80%', padding: 8, marginBottom: 8, borderRadius: 4, border: 'none' }}
-                /><br />
-                <button
-                  type="submit"
-                  className="mythic-btn"
-                  disabled={loading || !email}
-                >
-                  {loading ? 'Submitting...' : 'Download'}
-                </button>
-                {error && <div style={{ color: 'red', marginTop: 8 }}>{error}</div>}
-              </form>
-            ) : (
-              <div>
-                <h3>Thank you!</h3>
-                <a
-                  href={SAMPLE_PACK_URL}
-                  download
-                  ref={downloadRef}
-                  style={{ display: 'none' }}
-                >
-                  Download Sample Pack
-                </a>
-                <p>Your download should start automatically. <br />
-                  <a href={SAMPLE_PACK_URL} download>
-                    <button
-                      style={{
-                        padding: '8px 24px',
-                        borderRadius: 4,
-                        border: 'none',
-                        background: '#4C858A',
-                        color: 'white',
-                        fontWeight: 'bold',
-                        fontSize: 20,
-                        cursor: 'pointer',
-                        marginTop: 12
-                      }}
-                    >
-                      Download
-                    </button>
-                  </a>
-                </p>
-              </div>
-            )}
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Your email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                required
+                style={{ width: '80%', padding: 8, marginBottom: 8, borderRadius: 4, border: 'none' }}
+              /><br />
+              <button
+                type="submit"
+                className="mythic-btn"
+                disabled={loading || !email}
+              >
+                {loading ? 'Submitting...' : 'Download'}
+              </button>
+              {error && <div style={{ color: 'red', marginTop: 8 }}>{error}</div>}
+            </form>
           </div>
         );
     }
@@ -647,7 +729,7 @@ export default function Home() {
             padding: '10px 24px',
             borderRadius: 25,
             border: 'none',
-            background: currentView === 'samples' ? '#F4F1EE' : 'rgba(244, 241, 238, 0.9)',
+            background: currentView === 'samples' ? '#fff' : '#eaeaea',
             color: '#222222',
             fontWeight: 'bold',
             cursor: 'pointer',
@@ -666,7 +748,7 @@ export default function Home() {
             padding: '10px 24px',
             borderRadius: 25,
             border: 'none',
-            background: currentView === 'about' ? '#F4F1EE' : 'rgba(244, 241, 238, 0.9)',
+            background: currentView === 'about' ? '#fff' : '#eaeaea',
             color: '#222222',
             fontWeight: 'bold',
             cursor: 'pointer',
@@ -685,7 +767,7 @@ export default function Home() {
             padding: '10px 24px',
             borderRadius: 25,
             border: 'none',
-            background: '#F4F1EE',
+            background: '#eaeaea',
             color: '#222222',
             fontWeight: 'bold',
             cursor: 'pointer',
