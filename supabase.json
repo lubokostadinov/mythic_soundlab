@@ -1,8 +1,0 @@
-{
-  "project_id": "grxandvmphfzepoqtbtp",
-  "functions": {
-    "sample-pack-store": {
-      "verify_jwt": false
-    }
-  }
-} 
