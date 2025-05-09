@@ -146,18 +146,62 @@ export default function Home() {
           <div style={{
             width: '90%',
             maxWidth: 1400,
-            background: 'rgba(0,0,0,0.7)',
+            background: 'rgba(0,0,0,0.85)',
             color: 'white',
             padding: 32,
             borderRadius: 16,
             boxShadow: '0 4px 32px rgba(0,0,0,0.3)',
           }}>
-            <h2>About Mythic Soundlab</h2>
-            <p>Your company description here...</p>
+            <p style={{ 
+              fontSize: '16px',
+              lineHeight: '1.7',
+              marginBottom: '20px',
+              color: '#e0e0e0'
+            }}>
+              At Mythic Soundlab, we are a collective of passionate producers dedicated to pushing the boundaries of sound. Born from the studio sessions of electronic artists and sound designers, our platform offers premium sample packs crafted by producers, for producers. Whether you're creating atmospheric soundtracks for both movies and video games or building the next club anthem, our libraries are designed to inspire and give your production a unique edge.
+            </p>
+            <p style={{ 
+              fontSize: '16px',
+              lineHeight: '1.7',
+              marginBottom: '20px',
+              color: '#e0e0e0'
+            }}>
+              What sets Mythic Soundlab apart is our attention to detail and originality. Every sound is carefully designed by our passionate team of sound designers — no recycled loops, no generic presets. We specialize in electronic music and cinematic sound design, delivering textures and tones you won't find anywhere else.
+            </p>
+            <p style={{ 
+              fontSize: '16px',
+              lineHeight: '1.7',
+              marginBottom: '20px',
+              color: '#e0e0e0'
+            }}>
+              Unlike the mass-market sample giants, we stay close to our community. Our small, agile team listens, and we welcome your requests, adapt to your creative needs, and are always ready to support you directly. At Mythic Soundlab, you're not just a customer — you're a collaborator in shaping the next wave of sound.
+            </p>
+            <p style={{ 
+              fontSize: '16px',
+              lineHeight: '1.7',
+              marginBottom: '20px',
+              color: '#e0e0e0'
+            }}>
+              Join us and discover the difference that true mythical craftsmanship makes.
+            </p>
+            <div style={{ 
+              marginTop: '32px',
+              textAlign: 'center'
+            }}>
+              <p style={{ 
+                margin: '0', 
+                color: '#e0e0e0',
+                fontSize: '16px',
+                lineHeight: '1.7'
+              }}>
+                Contact Us:<br />
+                mythic.soundlab@gmail.com
+              </p>
+            </div>
           </div>
         );
       case 'samples':
-  return (
+        return (
           <div style={{
             width: '90%',
             maxWidth: 1400,
@@ -548,8 +592,8 @@ export default function Home() {
                       gap: '16px',
                       textAlign: 'center'
                     }}>
-                      <p style={{ margin: '0' }}>Format: High-quality WAV files</p>
-                      <p style={{ margin: '0' }}>Royalty-Free: Yes</p>
+                      <p style={{ margin: '0', color: '#fff' }}>Format: High-quality WAV files</p>
+                      <p style={{ margin: '0', color: '#fff' }}>Royalty-Free: Yes</p>
                     </div>
 
                     {/* Email Form */}
@@ -671,126 +715,150 @@ export default function Home() {
 
   return (
     <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100vw',
       height: '100vh',
-      backgroundImage: `url(${BACKGROUND_IMAGE_URL})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      position: 'relative',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      backgroundColor: 'black',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     }}>
-      <img
-        src="https://grxandvmphfzepoqtbtp.supabase.co/storage/v1/object/public/sample-packs//mythic_logo_alpha.png"
-        alt="Mythic Soundlab Logo"
-        style={{
-          position: 'absolute',
-          top: -4,      // Keep this for vertical center alignment
-          left: 0,     // Move a little to the right; adjust as needed
-          height: 160,
-          width: 'auto',
-          zIndex: 100,
-          display: 'block',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Company name */}
       <div style={{
-        position: 'absolute',
-        top: 48,
-        right: 48,
-        fontSize: 48,
-        color: 'white',
-        WebkitTextStroke: '2px black',
-        textShadow: '0 4px 24px rgba(0,0,0,0.8)',
-        zIndex: 10,
-        fontFamily: "'Raleway', Arial, sans-serif",
-        letterSpacing: 2,
-        lineHeight: 1.1,
-        userSelect: 'none',
-        fontWeight: 900,
-        textTransform: 'uppercase'
+        width: '1920px',
+        height: '1080px',
+        position: 'relative',
+        overflow: 'hidden',
+        backgroundImage: `url(${BACKGROUND_IMAGE_URL})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        transform: 'scale(1)',
+        transformOrigin: 'center center',
+        willChange: 'transform',
+        margin: 0,
+        padding: 0,
       }}>
-        Mythic Soundlab
+        {/* Logo */}
+        <img
+          src="https://grxandvmphfzepoqtbtp.supabase.co/storage/v1/object/public/sample-packs//mythic_logo_alpha.png"
+          alt="Mythic Soundlab Logo"
+          style={{
+            position: 'absolute',
+            top: 103,
+            left: 20,
+            height: 160,
+            width: 'auto',
+            zIndex: 100,
+            display: 'block',
+            pointerEvents: 'none',
+          }}
+        />
+
+        {/* Company name */}
+        <div style={{
+          position: 'absolute',
+          top: 155,
+          right: 48,
+          fontSize: 48,
+          color: 'white',
+          WebkitTextStroke: '2px black',
+          textShadow: '0 4px 24px rgba(0,0,0,0.8)',
+          zIndex: 10,
+          fontFamily: "'Orbitron', Arial, sans-serif",
+          letterSpacing: 2,
+          lineHeight: 1.1,
+          userSelect: 'none',
+          fontWeight: 900,
+          textTransform: 'uppercase'
+        }}>
+          Mythic Soundlab
         </div>
 
-      {/* Navigation Menu - Adjusted to match content area exactly */}
-      <div style={{
-        position: 'absolute',
-        left: 'calc(5vw + 84px)',
-        top: 48,
-        display: 'flex',
-        flexDirection: 'row',
-        gap: '12px',
-        zIndex: 20,
-      }}>
-        <button
-          onClick={() => setCurrentView('samples')}
-          style={{
-            padding: '10px 24px',
-            borderRadius: 25,
-            border: 'none',
-            background: currentView === 'samples' ? '#fff' : '#eaeaea',
-            color: '#222222',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            textTransform: 'uppercase',
-            fontSize: '14px',
-            letterSpacing: '1px',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-          }}
-        >
-          Sample Packs
-        </button>
-        <button
-          onClick={() => setCurrentView('about')}
-          style={{
-            padding: '10px 24px',
-            borderRadius: 25,
-            border: 'none',
-            background: currentView === 'about' ? '#fff' : '#eaeaea',
-            color: '#222222',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            textTransform: 'uppercase',
-            fontSize: '14px',
-            letterSpacing: '1px',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-          }}
-        >
-          About Us
-        </button>
-        <button
-          onClick={openFeedbackForm}
-          style={{
-            padding: '10px 24px',
-            borderRadius: 25,
-            border: 'none',
-            background: '#eaeaea',
-            color: '#222222',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            textTransform: 'uppercase',
-            fontSize: '14px',
-            letterSpacing: '1px',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-          }}
-        >
-          Feedback
-        </button>
-      </div>
+        {/* Navigation Menu */}
+        <div style={{
+          position: 'absolute',
+          left: 200,
+          top: 160, // Moved down from 140 to 150
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '12px',
+          zIndex: 20,
+        }}>
+          <button
+            onClick={() => setCurrentView('samples')}
+            style={{
+              padding: '10px 24px',
+              borderRadius: 25,
+              border: 'none',
+              background: currentView === 'samples' ? '#fff' : '#eaeaea',
+              color: '#222222',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              textTransform: 'uppercase',
+              fontSize: '14px',
+              letterSpacing: '1px',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+            }}
+          >
+            Sample Packs
+          </button>
+          <button
+            onClick={() => setCurrentView('about')}
+            style={{
+              padding: '10px 24px',
+              borderRadius: 25,
+              border: 'none',
+              background: currentView === 'about' ? '#fff' : '#eaeaea',
+              color: '#222222',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              textTransform: 'uppercase',
+              fontSize: '14px',
+              letterSpacing: '1px',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+            }}
+          >
+            About Us
+          </button>
+          <button
+            onClick={openFeedbackForm}
+            style={{
+              padding: '10px 24px',
+              borderRadius: 25,
+              border: 'none',
+              background: '#eaeaea',
+              color: '#222222',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              textTransform: 'uppercase',
+              fontSize: '14px',
+              letterSpacing: '1px',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+            }}
+          >
+            Feedback
+          </button>
+        </div>
 
-      {/* Main Content Area */}
-      <div style={{
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: '20px' // Reduced top margin since buttons are now at the top
-      }}>
-        {renderContent()}
+        {/* Main Content Area */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '90%',
+          maxWidth: 1400,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+          {renderContent()}
+        </div>
       </div>
     </div>
   );
