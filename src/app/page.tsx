@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { createClient } from '@supabase/supabase-js';
+import Image from 'next/image';
 
 const supabase = createClient(
   'https://grxandvmphfzepoqtbtp.supabase.co',
@@ -158,7 +159,7 @@ export default function Home() {
               marginBottom: '20px',
               color: '#e0e0e0'
             }}>
-              At Mythic Soundlab, we are a collective of passionate producers dedicated to pushing the boundaries of sound. Born from the studio sessions of electronic artists and sound designers, our platform offers premium sample packs crafted by producers, for producers. Whether you're creating atmospheric soundtracks for both movies and video games or building the next club anthem, our libraries are designed to inspire and give your production a unique edge.
+              At Mythic Soundlab, we are a collective of passionate producers dedicated to pushing the boundaries of sound. Born from the studio sessions of electronic artists and sound designers, our platform offers premium sample packs crafted by producers, for producers. Whether you&apos;re creating atmospheric soundtracks for both movies and video games or building the next club anthem, our libraries are designed to inspire and give your production a unique edge.
             </p>
             <p style={{ 
               fontSize: '16px',
@@ -166,7 +167,7 @@ export default function Home() {
               marginBottom: '20px',
               color: '#e0e0e0'
             }}>
-              What sets Mythic Soundlab apart is our attention to detail and originality. Every sound is carefully designed by our passionate team of sound designers — no recycled loops, no generic presets. We specialize in electronic music and cinematic sound design, delivering textures and tones you won't find anywhere else.
+              What sets Mythic Soundlab apart is our attention to detail and originality. Every sound is carefully designed by our passionate team of sound designers — no recycled loops, no generic presets. We specialize in electronic music and cinematic sound design, delivering textures and tones you won&apos;t find anywhere else.
             </p>
             <p style={{ 
               fontSize: '16px',
@@ -174,7 +175,7 @@ export default function Home() {
               marginBottom: '20px',
               color: '#e0e0e0'
             }}>
-              Unlike the mass-market sample giants, we stay close to our community. Our small, agile team listens, and we welcome your requests, adapt to your creative needs, and are always ready to support you directly. At Mythic Soundlab, you're not just a customer — you're a collaborator in shaping the next wave of sound.
+              Unlike the mass-market sample giants, we stay close to our community. Our small, agile team listens, and we welcome your requests, adapt to your creative needs, and are always ready to support you directly. At Mythic Soundlab, you&apos;re not just a customer — you&apos;re a collaborator in shaping the next wave of sound.
             </p>
             <p style={{ 
               fontSize: '16px',
@@ -274,9 +275,11 @@ export default function Home() {
                     >
                       {pack.title}
                     </div>
-                    <img
+                    <Image
                       src={pack.image}
                       alt={pack.title}
+                      width={150}
+                      height={150}
                       style={{
                         width: '100%',
                         height: 'auto',
@@ -427,9 +430,11 @@ export default function Home() {
                     flexShrink: 0,
                     width: '350px'
                   }}>
-                    <img
+                    <Image
                       src={COVER_IMAGE_URL}
                       alt="Sample Pack Cover"
+                      width={350}
+                      height={350}
                       style={{
                         width: '100%',
                         height: 'auto',
@@ -659,9 +664,11 @@ export default function Home() {
             boxShadow: '0 4px 32px rgba(0,0,0,0.3)'
           }}>
             <h2>Free Sample Pack: Mythic Essentials Vol. 1</h2>
-            <img
+            <Image
               src="https://grxandvmphfzepoqtbtp.supabase.co/storage/v1/object/public/sample-packs//mythic_logo_alpha.png"
               alt="Mythic Soundlab Logo"
+              width={160}
+              height={160}
               style={{
                 position: 'absolute',
                 top: -8,      // Keep this for vertical center alignment
@@ -673,9 +680,11 @@ export default function Home() {
                 pointerEvents: 'none',
               }}
             />
-            <img
+            <Image
               src={COVER_IMAGE_URL}
               alt="Sample Pack Cover"
+              width={220}
+              height={220}
               style={{
                 width: 220,
                 height: 220,
@@ -741,9 +750,11 @@ export default function Home() {
         padding: 0,
       }}>
         {/* Logo */}
-        <img
+        <Image
           src="https://grxandvmphfzepoqtbtp.supabase.co/storage/v1/object/public/sample-packs//mythic_logo_alpha.png"
           alt="Mythic Soundlab Logo"
+          width={160}
+          height={160}
           style={{
             position: 'absolute',
             top: 103,
