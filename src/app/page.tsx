@@ -3,8 +3,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
-  'https://grxandvmphfzepoqtbtp.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdyeGFuZHZtcGhmemVwb3F0YnRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU4NjI2MTgsImV4cCI6MjA2MTQzODYxOH0.xwm3whmK63tNvqyIQSLPHrgAqHU9r9LGcIeqquKloww'
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
 const SAMPLE_PACK_URL = 'https://grxandvmphfzepoqtbtp.supabase.co/storage/v1/object/public/sample-packs//fx.rar';
@@ -93,17 +93,35 @@ export default function Home() {
       return;
     }
 
-    // Save email and country to Supabase
-    const { error } = await supabase
-      .from('emails')
-      .insert([{ email, country }]);
+    try {
+      // First check if email exists
+      const { data: existingEmail } = await supabase
+        .from('emails')
+        .select('email')
+        .eq('email', email)
+        .single();
 
-    setLoading(false);
+      if (existingEmail) {
+        // Email exists, just proceed with download
+        setSubmitted(true);
+        setLoading(false);
+        return;
+      }
 
-    if (error) {
-      setError('There was an error saving your email. Please try again.');
-    } else {
-      setSubmitted(true);
+      // Email doesn't exist, insert it
+      const { error } = await supabase
+        .from('emails')
+        .insert([{ email, country }]);
+
+      if (error) {
+        setError('There was an error saving your email. Please try again.');
+      } else {
+        setSubmitted(true);
+      }
+    } catch (err) {
+      setError('An unexpected error occurred. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
