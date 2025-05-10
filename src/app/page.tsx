@@ -57,7 +57,7 @@ export default function Home() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const downloadRef = useRef<HTMLAnchorElement>(null);
-  const [currentView, setCurrentView] = useState('samples'); // 'samples', 'about'
+  const [currentView, setCurrentView] = useState('samples'); // 'samples', 'about', 'terms', 'privacy'
   const [selectedPack, setSelectedPack] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -199,6 +199,190 @@ export default function Home() {
                 Contact Us:<br />
                 mythic.soundlab@gmail.com
               </p>
+            </div>
+          </div>
+        );
+      case 'terms':
+        return (
+          <div style={{
+            width: '90%',
+            maxWidth: 1400,
+            background: 'rgba(0,0,0,0.85)',
+            color: 'white',
+            padding: 32,
+            borderRadius: 16,
+            boxShadow: '0 4px 32px rgba(0,0,0,0.3)',
+          }}>
+            <h2 style={{ 
+              fontSize: '34px',
+              fontWeight: 700,
+              letterSpacing: 2,
+              lineHeight: 1.1,
+              width: '100%',
+              margin: 0,
+              marginBottom: '24px',
+              color: '#fff',
+            }}>
+              Terms and Conditions
+            </h2>
+            <button
+              onClick={() => setCurrentView('samples')}
+              style={{
+                position: 'absolute',
+                left: '20px',
+                top: '20px',
+                padding: '8px 16px 8px 8px',
+                borderRadius: 25,
+                border: 'none',
+                background: '#F4F1EE',
+                color: '#222222',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                fontSize: '14px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+              }}
+            >
+              <span
+                style={{
+                  display: 'inline-block',
+                  width: 0,
+                  height: 0,
+                  borderTop: '7px solid transparent',
+                  borderBottom: '7px solid transparent',
+                  borderRight: '10px solid #222',
+                  marginRight: 2,
+                }}
+              />
+              Back
+            </button>
+            <div style={{ 
+              color: '#e0e0e0',
+              fontSize: '16px',
+              lineHeight: '1.7',
+            }}>
+              <p style={{ marginBottom: '16px' }}>
+                Last updated: {new Date().toLocaleDateString()}
+              </p>
+
+              <section style={{ marginBottom: '32px' }}>
+                <h3 style={{ fontSize: '24px', marginBottom: '16px', color: '#F4F1EE' }}>1. Introduction</h3>
+                <p style={{ marginBottom: '16px' }}>
+                  Welcome to Mythic Soundlab. By accessing our website and using our sample packs, you agree to these terms and conditions.
+                </p>
+              </section>
+
+              <section style={{ marginBottom: '32px' }}>
+                <h3 style={{ fontSize: '24px', marginBottom: '16px', color: '#F4F1EE' }}>2. License and Usage</h3>
+                <p style={{ marginBottom: '16px' }}>
+                  Our sample packs are provided under a royalty-free license. This means you can:
+                </p>
+                <ul style={{ listStyle: 'disc', marginLeft: '24px', marginBottom: '16px' }}>
+                  <li>Use the samples in your music productions</li>
+                  <li>Create derivative works</li>
+                  <li>Use the samples in commercial projects</li>
+                </ul>
+                <p style={{ marginBottom: '16px' }}>
+                  However, you cannot:
+                </p>
+                <ul style={{ listStyle: 'disc', marginLeft: '24px', marginBottom: '16px' }}>
+                  <li>Resell or redistribute the samples</li>
+                  <li>Claim ownership of the samples</li>
+                  <li>Use the samples in sample packs or sound libraries</li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        );
+      case 'privacy':
+        return (
+          <div style={{
+            width: '90%',
+            maxWidth: 1400,
+            background: 'rgba(0,0,0,0.85)',
+            color: 'white',
+            padding: 32,
+            borderRadius: 16,
+            boxShadow: '0 4px 32px rgba(0,0,0,0.3)',
+          }}>
+            <h2 style={{ 
+              fontSize: '34px',
+              fontWeight: 700,
+              letterSpacing: 2,
+              lineHeight: 1.1,
+              width: '100%',
+              margin: 0,
+              marginBottom: '24px',
+              color: '#fff',
+            }}>
+              Privacy Policy
+            </h2>
+            <button
+              onClick={() => setCurrentView('samples')}
+              style={{
+                position: 'absolute',
+                left: '20px',
+                top: '20px',
+                padding: '8px 16px 8px 8px',
+                borderRadius: 25,
+                border: 'none',
+                background: '#F4F1EE',
+                color: '#222222',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                fontSize: '14px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+              }}
+            >
+              <span
+                style={{
+                  display: 'inline-block',
+                  width: 0,
+                  height: 0,
+                  borderTop: '7px solid transparent',
+                  borderBottom: '7px solid transparent',
+                  borderRight: '10px solid #222',
+                  marginRight: 2,
+                }}
+              />
+              Back
+            </button>
+            <div style={{ 
+              color: '#e0e0e0',
+              fontSize: '16px',
+              lineHeight: '1.7',
+            }}>
+              <p style={{ marginBottom: '16px' }}>
+                Last updated: {new Date().toLocaleDateString()}
+              </p>
+
+              <section style={{ marginBottom: '32px' }}>
+                <h3 style={{ fontSize: '24px', marginBottom: '16px', color: '#F4F1EE' }}>1. Information We Collect</h3>
+                <p style={{ marginBottom: '16px' }}>
+                  We collect the following types of information:
+                </p>
+                <ul style={{ listStyle: 'disc', marginLeft: '24px', marginBottom: '16px' }}>
+                  <li>Email address (when you download sample packs)</li>
+                  <li>Country information (for analytics purposes)</li>
+                  <li>Usage data (how you interact with our website)</li>
+                </ul>
+              </section>
+
+              <section style={{ marginBottom: '32px' }}>
+                <h3 style={{ fontSize: '24px', marginBottom: '16px', color: '#F4F1EE' }}>2. How We Use Your Information</h3>
+                <p style={{ marginBottom: '16px' }}>
+                  We use your information to:
+                </p>
+                <ul style={{ listStyle: 'disc', marginLeft: '24px', marginBottom: '16px' }}>
+                  <li>Provide you with sample packs</li>
+                  <li>Send you updates about new releases</li>
+                  <li>Improve our website and services</li>
+                  <li>Analyze usage patterns</li>
+                </ul>
+              </section>
             </div>
           </div>
         );
@@ -672,8 +856,8 @@ export default function Home() {
               height={160}
               style={{
                 position: 'absolute',
-                top: -8,      // Keep this for vertical center alignment
-                left: 16,     // Move a little to the right; adjust as needed
+                top: 83,
+                left: 20,
                 height: 160,
                 width: 'auto',
                 zIndex: 100,
@@ -736,171 +920,215 @@ export default function Home() {
         bottom: 0,
         backgroundColor: 'black',
         zIndex: -1,
-      }} />
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: '1920px',
-        height: '1080px',
-        overflow: 'hidden',
-        backgroundColor: 'black',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        touchAction: 'none',
-        overscrollBehavior: 'none',
-        WebkitTextSizeAdjust: 'none',
-        WebkitTouchCallout: 'none',
-        WebkitUserSelect: 'none',
-        userSelect: 'none',
-        willChange: 'transform',
-        minWidth: '1920px',
-        minHeight: '1080px',
+        overflow: 'auto',
       }}>
         <div style={{
+          position: 'absolute',
+          top: 0,
+          left: '50%',
+          transform: 'translateX(-50%)',
           width: '1920px',
           height: '1080px',
-          position: 'relative',
-          overflow: 'hidden',
-          backgroundImage: `url(${BACKGROUND_IMAGE_URL})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          transform: 'none',
-          transformOrigin: 'top center',
-          willChange: 'transform',
-          margin: 0,
-          padding: 0,
+          backgroundColor: 'black',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'flex-start',
           touchAction: 'none',
           overscrollBehavior: 'none',
           WebkitTextSizeAdjust: 'none',
           WebkitTouchCallout: 'none',
           WebkitUserSelect: 'none',
           userSelect: 'none',
+          willChange: 'transform',
           minWidth: '1920px',
           minHeight: '1080px',
         }}>
-          {/* Logo */}
-          <Image
-            src="https://grxandvmphfzepoqtbtp.supabase.co/storage/v1/object/public/sample-packs//mythic_logo_alpha.png"
-            alt="Mythic Soundlab Logo"
-            width={160}
-            height={160}
-            style={{
-              position: 'absolute',
-              top: 103,
-              left: 20,
-              height: 160,
-              width: 'auto',
-              zIndex: 100,
-              display: 'block',
-              pointerEvents: 'none',
-            }}
-          />
-
-          {/* Company name */}
           <div style={{
-            position: 'absolute',
-            top: 155,
-            right: 48,
-            fontSize: 48,
-            color: 'white',
-            WebkitTextStroke: '2px black',
-            textShadow: '0 4px 24px rgba(0,0,0,0.8)',
-            zIndex: 10,
-            fontFamily: "'Orbitron', Arial, sans-serif",
-            letterSpacing: 2,
-            lineHeight: 1.1,
+            width: '1920px',
+            height: '1080px',
+            position: 'relative',
+            backgroundImage: `url(${BACKGROUND_IMAGE_URL})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transform: 'none',
+            transformOrigin: 'top center',
+            willChange: 'transform',
+            margin: 0,
+            padding: 0,
+            touchAction: 'none',
+            overscrollBehavior: 'none',
+            WebkitTextSizeAdjust: 'none',
+            WebkitTouchCallout: 'none',
+            WebkitUserSelect: 'none',
             userSelect: 'none',
-            fontWeight: 900,
-            textTransform: 'uppercase'
+            minWidth: '1920px',
+            minHeight: '1080px',
           }}>
-            Mythic Soundlab
-          </div>
+            {/* Logo */}
+            <Image
+              src="https://grxandvmphfzepoqtbtp.supabase.co/storage/v1/object/public/sample-packs//mythic_logo_alpha.png"
+              alt="Mythic Soundlab Logo"
+              width={160}
+              height={160}
+              style={{
+                position: 'absolute',
+                top: 23,
+                left: 120,
+                height: 160,
+                width: 'auto',
+                zIndex: 100,
+                display: 'block',
+                pointerEvents: 'none',
+              }}
+            />
 
-          {/* Navigation Menu */}
-          <div style={{
-            position: 'absolute',
-            left: 200,
-            top: 160, // Moved down from 140 to 150
-            display: 'flex',
-            flexDirection: 'row',
-            gap: '12px',
-            zIndex: 20,
-          }}>
-            <button
-              onClick={() => setCurrentView('samples')}
-              style={{
-                padding: '10px 24px',
-                borderRadius: 25,
-                border: 'none',
-                background: currentView === 'samples' ? '#fff' : '#eaeaea',
-                color: '#222222',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                textTransform: 'uppercase',
-                fontSize: '14px',
-                letterSpacing: '1px',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-              }}
-            >
-              Sample Packs
-            </button>
-            <button
-              onClick={() => setCurrentView('about')}
-              style={{
-                padding: '10px 24px',
-                borderRadius: 25,
-                border: 'none',
-                background: currentView === 'about' ? '#fff' : '#eaeaea',
-                color: '#222222',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                textTransform: 'uppercase',
-                fontSize: '14px',
-                letterSpacing: '1px',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-              }}
-            >
-              About Us
-            </button>
-            <button
-              onClick={openFeedbackForm}
-              style={{
-                padding: '10px 24px',
-                borderRadius: 25,
-                border: 'none',
-                background: '#eaeaea',
-                color: '#222222',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                textTransform: 'uppercase',
-                fontSize: '14px',
-                letterSpacing: '1px',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-              }}
-            >
-              Feedback
-            </button>
-          </div>
+            {/* Company name */}
+            <div style={{
+              position: 'absolute',
+              top: 75,
+              right: 188,
+              fontSize: 48,
+              color: 'white',
+              WebkitTextStroke: '2px black',
+              textShadow: '0 4px 24px rgba(0,0,0,0.8)',
+              zIndex: 10,
+              fontFamily: "'Orbitron', Arial, sans-serif",
+              letterSpacing: 2,
+              lineHeight: 1.1,
+              userSelect: 'none',
+              fontWeight: 900,
+              textTransform: 'uppercase'
+            }}>
+              Mythic Soundlab
+            </div>
 
-          {/* Main Content Area */}
-          <div style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '90%',
-            maxWidth: 1400,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-            {renderContent()}
+            {/* Navigation Menu */}
+            <div style={{
+              position: 'absolute',
+              left: 330,
+              top: 80,
+              display: 'flex',
+              flexDirection: 'row',
+              gap: '12px',
+              zIndex: 20,
+            }}>
+              <button
+                onClick={() => setCurrentView('samples')}
+                style={{
+                  padding: '10px 24px',
+                  borderRadius: 25,
+                  border: 'none',
+                  background: currentView === 'samples' ? '#fff' : '#eaeaea',
+                  color: '#222222',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  textTransform: 'uppercase',
+                  fontSize: '14px',
+                  letterSpacing: '1px',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+                }}
+              >
+                Sample Packs
+              </button>
+              <button
+                onClick={() => setCurrentView('about')}
+                style={{
+                  padding: '10px 24px',
+                  borderRadius: 25,
+                  border: 'none',
+                  background: currentView === 'about' ? '#fff' : '#eaeaea',
+                  color: '#222222',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  textTransform: 'uppercase',
+                  fontSize: '14px',
+                  letterSpacing: '1px',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+                }}
+              >
+                About Us
+              </button>
+              <button
+                onClick={openFeedbackForm}
+                style={{
+                  padding: '10px 24px',
+                  borderRadius: 25,
+                  border: 'none',
+                  background: '#eaeaea',
+                  color: '#222222',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  textTransform: 'uppercase',
+                  fontSize: '14px',
+                  letterSpacing: '1px',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+                }}
+              >
+                Feedback
+              </button>
+            </div>
+
+            {/* Main Content Area */}
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '90%',
+              maxWidth: 1400,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '24px',
+            }}>
+              {renderContent()}
+              
+              {/* Legal Links */}
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '24px',
+                marginTop: '16px',
+              }}>
+                <button
+                  onClick={() => setCurrentView('terms')}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: '#e0e0e0',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    opacity: 0.8,
+                    transition: 'opacity 0.2s',
+                    padding: '8px 16px',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+                  onMouseLeave={(e) => e.currentTarget.style.opacity = '0.8'}
+                >
+                  Terms & Conditions
+                </button>
+                <button
+                  onClick={() => setCurrentView('privacy')}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: '#e0e0e0',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    opacity: 0.8,
+                    transition: 'opacity 0.2s',
+                    padding: '8px 16px',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+                  onMouseLeave={(e) => e.currentTarget.style.opacity = '0.8'}
+                >
+                  Privacy Policy
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
