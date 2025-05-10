@@ -153,52 +153,77 @@ export default function Home() {
             padding: 32,
             borderRadius: 16,
             boxShadow: '0 4px 32px rgba(0,0,0,0.3)',
+            position: 'relative',
+            minHeight: '600px',
+            display: 'flex',
+            flexDirection: 'column'
           }}>
-            <p style={{ 
-              fontSize: '16px',
-              lineHeight: '1.7',
-              marginBottom: '20px',
-              color: '#e0e0e0'
-            }}>
-              At Mythic Soundlab, we are a collective of passionate producers dedicated to pushing the boundaries of sound. Born from the studio sessions of electronic artists and sound designers, our platform offers premium sample packs crafted by producers, for producers. Whether you&apos;re creating atmospheric soundtracks for both movies and video games or building the next club anthem, our libraries are designed to inspire and give your production a unique edge.
-            </p>
-            <p style={{ 
-              fontSize: '16px',
-              lineHeight: '1.7',
-              marginBottom: '20px',
-              color: '#e0e0e0'
-            }}>
-              What sets Mythic Soundlab apart is our attention to detail and originality. Every sound is carefully designed by our passionate team of sound designers — no recycled loops, no generic presets. We specialize in electronic music and cinematic sound design, delivering textures and tones you won&apos;t find anywhere else.
-            </p>
-            <p style={{ 
-              fontSize: '16px',
-              lineHeight: '1.7',
-              marginBottom: '20px',
-              color: '#e0e0e0'
-            }}>
-              Unlike the mass-market sample giants, we stay close to our community. Our small, agile team listens, and we welcome your requests, adapt to your creative needs, and are always ready to support you directly. At Mythic Soundlab, you&apos;re not just a customer — you&apos;re a collaborator in shaping the next wave of sound.
-            </p>
-            <p style={{ 
-              fontSize: '16px',
-              lineHeight: '1.7',
-              marginBottom: '20px',
-              color: '#e0e0e0'
-            }}>
-              Join us and discover the difference that true mythical craftsmanship makes.
-            </p>
-            <div style={{ 
-              marginTop: '32px',
+            <h2 style={{ 
+              fontSize: '34px',
+              fontWeight: 700,
+              letterSpacing: 2,
+              lineHeight: 1.1,
+              width: '100%',
+              margin: 0,
+              marginBottom: '24px',
+              color: '#fff',
               textAlign: 'center'
             }}>
+              About Us
+            </h2>
+            <div style={{ 
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '24px'
+            }}>
               <p style={{ 
-                margin: '0', 
-                color: '#e0e0e0',
                 fontSize: '16px',
-                lineHeight: '1.7'
+                lineHeight: '1.7',
+                color: '#e0e0e0',
+                margin: 0
               }}>
-                Contact Us:<br />
-                mythic.soundlab@gmail.com
+                At Mythic Soundlab, we are a collective of passionate producers dedicated to pushing the boundaries of sound. Born from the studio sessions of electronic artists and sound designers, our platform offers premium sample packs crafted by producers, for producers. Whether you&apos;re creating atmospheric soundtracks for both movies and video games or building the next club anthem, our libraries are designed to inspire and give your production a unique edge.
               </p>
+              <p style={{ 
+                fontSize: '16px',
+                lineHeight: '1.7',
+                color: '#e0e0e0',
+                margin: 0
+              }}>
+                What sets Mythic Soundlab apart is our attention to detail and originality. Every sound is carefully designed by our passionate team of sound designers — no recycled loops, no generic presets. We specialize in electronic music and cinematic sound design, delivering textures and tones you won&apos;t find anywhere else.
+              </p>
+              <p style={{ 
+                fontSize: '16px',
+                lineHeight: '1.7',
+                color: '#e0e0e0',
+                margin: 0
+              }}>
+                Unlike the mass-market sample giants, we stay close to our community. Our small, agile team listens, and we welcome your requests, adapt to your creative needs, and are always ready to support you directly. At Mythic Soundlab, you&apos;re not just a customer — you&apos;re a collaborator in shaping the next wave of sound.
+              </p>
+              <p style={{ 
+                fontSize: '16px',
+                lineHeight: '1.7',
+                color: '#e0e0e0',
+                margin: 0
+              }}>
+                Join us and discover the difference that true mythical craftsmanship makes.
+              </p>
+              <div style={{ 
+                marginTop: 'auto',
+                textAlign: 'center',
+                paddingTop: '24px'
+              }}>
+                <p style={{ 
+                  margin: '0', 
+                  color: '#e0e0e0',
+                  fontSize: '16px',
+                  lineHeight: '1.7'
+                }}>
+                  Contact Us:<br />
+                  mythic.soundlab@gmail.com
+                </p>
+              </div>
             </div>
           </div>
         );
@@ -280,33 +305,33 @@ export default function Home() {
               flex: 1,
               display: 'flex',
               flexDirection: 'column',
-              gap: '32px'
+              gap: '24px'
             }}>
-              <p style={{ marginBottom: '16px' }}>
+              <p style={{ margin: 0 }}>
                 Last updated: {new Date().toLocaleDateString()}
               </p>
 
               <section>
                 <h3 style={{ fontSize: '24px', marginBottom: '16px', color: '#F4F1EE' }}>1. Introduction</h3>
-                <p style={{ marginBottom: '16px' }}>
+                <p style={{ margin: 0 }}>
                   Welcome to Mythic Soundlab. By accessing our website and using our sample packs, you agree to these terms and conditions.
                 </p>
               </section>
 
               <section>
                 <h3 style={{ fontSize: '24px', marginBottom: '16px', color: '#F4F1EE' }}>2. License and Usage</h3>
-                <p style={{ marginBottom: '16px' }}>
+                <p style={{ margin: 0 }}>
                   Our sample packs are provided under a royalty-free license. This means you can:
                 </p>
-                <ul style={{ listStyle: 'disc', marginLeft: '24px', marginBottom: '16px' }}>
+                <ul style={{ listStyle: 'disc', marginLeft: '24px', marginTop: '8px', marginBottom: '16px' }}>
                   <li>Use the samples in your music productions</li>
                   <li>Create derivative works</li>
                   <li>Use the samples in commercial projects</li>
                 </ul>
-                <p style={{ marginBottom: '16px' }}>
+                <p style={{ margin: 0 }}>
                   However, you cannot:
                 </p>
-                <ul style={{ listStyle: 'disc', marginLeft: '24px', marginBottom: '16px' }}>
+                <ul style={{ listStyle: 'disc', marginLeft: '24px', marginTop: '8px', marginBottom: '0' }}>
                   <li>Resell or redistribute the samples</li>
                   <li>Claim ownership of the samples</li>
                   <li>Use the samples in sample packs or sound libraries</li>
@@ -393,18 +418,18 @@ export default function Home() {
               flex: 1,
               display: 'flex',
               flexDirection: 'column',
-              gap: '32px'
+              gap: '24px'
             }}>
-              <p style={{ marginBottom: '16px' }}>
+              <p style={{ margin: 0 }}>
                 Last updated: {new Date().toLocaleDateString()}
               </p>
 
               <section>
                 <h3 style={{ fontSize: '24px', marginBottom: '16px', color: '#F4F1EE' }}>1. Information We Collect</h3>
-                <p style={{ marginBottom: '16px' }}>
+                <p style={{ margin: 0 }}>
                   We collect the following types of information:
                 </p>
-                <ul style={{ listStyle: 'disc', marginLeft: '24px', marginBottom: '16px' }}>
+                <ul style={{ listStyle: 'disc', marginLeft: '24px', marginTop: '8px', marginBottom: '16px' }}>
                   <li>Email address (when you download sample packs)</li>
                   <li>Country information (for analytics purposes)</li>
                   <li>Usage data (how you interact with our website)</li>
@@ -413,10 +438,10 @@ export default function Home() {
 
               <section>
                 <h3 style={{ fontSize: '24px', marginBottom: '16px', color: '#F4F1EE' }}>2. How We Use Your Information</h3>
-                <p style={{ marginBottom: '16px' }}>
+                <p style={{ margin: 0 }}>
                   We use your information to:
                 </p>
-                <ul style={{ listStyle: 'disc', marginLeft: '24px', marginBottom: '16px' }}>
+                <ul style={{ listStyle: 'disc', marginLeft: '24px', marginTop: '8px', marginBottom: '0' }}>
                   <li>Provide you with sample packs</li>
                   <li>Send you updates about new releases</li>
                   <li>Improve our website and services</li>
