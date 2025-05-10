@@ -118,7 +118,7 @@ export default function Home() {
   const samplePacks = [
     {
       id: 'cinematic-atmospheres',
-      title: 'Cinematic Atmospheres',
+      title: 'Cinematic Atmos',
       image: COVER_IMAGE_URL,
       audioDemo: DEMO_AUDIO_URL,
       downloadUrl: SAMPLE_PACK_URL,
@@ -148,7 +148,7 @@ export default function Home() {
           <div style={{
             width: '90%',
             maxWidth: 1400,
-            background: 'rgba(0,0,0,0.85)',
+            background: 'rgba(0,0,0,0.95)',
             color: 'white',
             padding: 32,
             borderRadius: 16,
@@ -207,11 +207,15 @@ export default function Home() {
           <div style={{
             width: '90%',
             maxWidth: 1400,
-            background: 'rgba(0,0,0,0.85)',
+            background: 'rgba(0,0,0,0.95)',
             color: 'white',
             padding: 32,
             borderRadius: 16,
             boxShadow: '0 4px 32px rgba(0,0,0,0.3)',
+            position: 'relative',
+            minHeight: '600px',
+            display: 'flex',
+            flexDirection: 'column'
           }}>
             <h2 style={{ 
               fontSize: '34px',
@@ -222,6 +226,7 @@ export default function Home() {
               margin: 0,
               marginBottom: '24px',
               color: '#fff',
+              textAlign: 'center'
             }}>
               Terms and Conditions
             </h2>
@@ -233,7 +238,7 @@ export default function Home() {
                 top: '20px',
                 padding: '8px 16px 8px 8px',
                 borderRadius: 25,
-                border: 'none',
+                border: '2px solid rgba(255, 255, 255, 0.1)',
                 background: '#F4F1EE',
                 color: '#222222',
                 fontWeight: 'bold',
@@ -242,6 +247,17 @@ export default function Home() {
                 display: 'flex',
                 alignItems: 'center',
                 gap: 8,
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                e.currentTarget.style.background = '#ffffff';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                e.currentTarget.style.background = '#F4F1EE';
               }}
             >
               <span
@@ -261,19 +277,23 @@ export default function Home() {
               color: '#e0e0e0',
               fontSize: '16px',
               lineHeight: '1.7',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '32px'
             }}>
               <p style={{ marginBottom: '16px' }}>
                 Last updated: {new Date().toLocaleDateString()}
               </p>
 
-              <section style={{ marginBottom: '32px' }}>
+              <section>
                 <h3 style={{ fontSize: '24px', marginBottom: '16px', color: '#F4F1EE' }}>1. Introduction</h3>
                 <p style={{ marginBottom: '16px' }}>
                   Welcome to Mythic Soundlab. By accessing our website and using our sample packs, you agree to these terms and conditions.
                 </p>
               </section>
 
-              <section style={{ marginBottom: '32px' }}>
+              <section>
                 <h3 style={{ fontSize: '24px', marginBottom: '16px', color: '#F4F1EE' }}>2. License and Usage</h3>
                 <p style={{ marginBottom: '16px' }}>
                   Our sample packs are provided under a royalty-free license. This means you can:
@@ -300,11 +320,15 @@ export default function Home() {
           <div style={{
             width: '90%',
             maxWidth: 1400,
-            background: 'rgba(0,0,0,0.85)',
+            background: 'rgba(0,0,0,0.95)',
             color: 'white',
             padding: 32,
             borderRadius: 16,
             boxShadow: '0 4px 32px rgba(0,0,0,0.3)',
+            position: 'relative',
+            minHeight: '600px',
+            display: 'flex',
+            flexDirection: 'column'
           }}>
             <h2 style={{ 
               fontSize: '34px',
@@ -315,6 +339,7 @@ export default function Home() {
               margin: 0,
               marginBottom: '24px',
               color: '#fff',
+              textAlign: 'center'
             }}>
               Privacy Policy
             </h2>
@@ -326,7 +351,7 @@ export default function Home() {
                 top: '20px',
                 padding: '8px 16px 8px 8px',
                 borderRadius: 25,
-                border: 'none',
+                border: '2px solid rgba(255, 255, 255, 0.1)',
                 background: '#F4F1EE',
                 color: '#222222',
                 fontWeight: 'bold',
@@ -335,6 +360,17 @@ export default function Home() {
                 display: 'flex',
                 alignItems: 'center',
                 gap: 8,
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                e.currentTarget.style.background = '#ffffff';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                e.currentTarget.style.background = '#F4F1EE';
               }}
             >
               <span
@@ -354,12 +390,16 @@ export default function Home() {
               color: '#e0e0e0',
               fontSize: '16px',
               lineHeight: '1.7',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '32px'
             }}>
               <p style={{ marginBottom: '16px' }}>
                 Last updated: {new Date().toLocaleDateString()}
               </p>
 
-              <section style={{ marginBottom: '32px' }}>
+              <section>
                 <h3 style={{ fontSize: '24px', marginBottom: '16px', color: '#F4F1EE' }}>1. Information We Collect</h3>
                 <p style={{ marginBottom: '16px' }}>
                   We collect the following types of information:
@@ -371,7 +411,7 @@ export default function Home() {
                 </ul>
               </section>
 
-              <section style={{ marginBottom: '32px' }}>
+              <section>
                 <h3 style={{ fontSize: '24px', marginBottom: '16px', color: '#F4F1EE' }}>2. How We Use Your Information</h3>
                 <p style={{ marginBottom: '16px' }}>
                   We use your information to:
@@ -391,7 +431,7 @@ export default function Home() {
           <div style={{
             width: '90%',
             maxWidth: 1400,
-            background: 'rgba(0,0,0,0.85)',
+            background: 'rgba(0,0,0,0.95)',
             color: 'white',
             padding: 32,
             borderRadius: 16,
@@ -437,12 +477,25 @@ export default function Home() {
                     key={pack.id}
                     style={{
                       cursor: 'pointer',
-                      transition: 'transform 0.2s',
+                      transition: 'transform 0.2s, border-color 0.2s',
                       width: '150px',
                       margin: '0 auto',
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'center',
+                      padding: '16px',
+                      borderRadius: '12px',
+                      border: '2px solid rgba(255, 255, 255, 0.1)',
+                      background: 'rgba(0, 0, 0, 0.2)',
+                    }}
+                    onClick={() => setSelectedPack(pack.id)}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-4px)';
+                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
                     }}
                   >
                     {/* Sample pack name above the image */}
@@ -456,6 +509,7 @@ export default function Home() {
                         alignItems: 'center',
                         whiteSpace: 'nowrap',
                         textAlign: 'center',
+                        color: '#fff',
                       }}
                     >
                       {pack.title}
@@ -471,27 +525,42 @@ export default function Home() {
                         borderRadius: 12,
                         marginBottom: 8,
                         boxShadow: '0 4px 24px rgba(0,0,0,0.4)',
-                        cursor: 'pointer',
                       }}
-                      onClick={() => setSelectedPack(pack.id)}
                     />
                     {/* Free Download button under the image */}
                     <button
-                      onClick={() => setSelectedPack(pack.id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedPack(pack.id);
+                      }}
                       style={{
                         marginTop: 8,
-                        padding: '8px 20px',
+                        padding: '6px 16px',
                         borderRadius: 20,
-                        border: 'none',
+                        border: '2px solid rgba(255, 255, 255, 0.1)',
                         background: '#4C858A',
                         color: 'white',
                         fontWeight: 700,
-                        fontSize: '15px',
+                        fontSize: '14px',
                         cursor: 'pointer',
                         textTransform: 'uppercase',
                         letterSpacing: 1,
                         boxShadow: '0 2px 4px rgba(0,0,0,0.15)',
-                        transition: 'background 0.2s',
+                        transition: 'all 0.3s ease',
+                        height: '32px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-4px)';
+                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                        e.currentTarget.style.background = '#5a959a';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                        e.currentTarget.style.background = '#4C858A';
                       }}
                     >
                       FREE
@@ -507,13 +576,13 @@ export default function Home() {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    border: 'none',
+                    border: '2px solid rgba(255, 255, 255, 0.1)',
                     borderRadius: 12,
-                    padding: '0',
+                    padding: '16px',
                     boxSizing: 'border-box',
                     minHeight: 210,
                     justifyContent: 'center',
-                    background: 'transparent',
+                    background: 'rgba(0, 0, 0, 0.2)',
                     marginTop: '-14px',
                   }}
                 >
@@ -537,10 +606,10 @@ export default function Home() {
                       style={{
                         color: '#fff',
                         fontWeight: 700,
-                        fontSize: '15px',
+                        fontSize: '13px',
                         textAlign: 'center',
                         letterSpacing: 1,
-                        opacity: 1, // Fully white
+                        opacity: 1,
                         margin: 0,
                         padding: 0,
                         width: '100%',
@@ -568,7 +637,7 @@ export default function Home() {
                     color: '#fff',
                   }}
                 >
-                  Cinematic Atmospheres
+                  Cinematic Atmos
                 </h2>
                 <button
                   onClick={() => setSelectedPack(null)}
@@ -578,7 +647,7 @@ export default function Home() {
                     top: '20px',
                     padding: '8px 16px 8px 8px',
                     borderRadius: 25,
-                    border: 'none',
+                    border: '2px solid rgba(255, 255, 255, 0.1)',
                     background: '#F4F1EE',
                     color: '#222222',
                     fontWeight: 'bold',
@@ -587,6 +656,17 @@ export default function Home() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: 8,
+                    transition: 'all 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                    e.currentTarget.style.background = '#ffffff';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    e.currentTarget.style.background = '#F4F1EE';
                   }}
                 >
                   <span
@@ -643,7 +723,7 @@ export default function Home() {
                           style={{
                             background: '#4C858A',
                             color: 'white',
-                            border: 'none',
+                            border: '2px solid rgba(255, 255, 255, 0.1)',
                             borderRadius: 20,
                             width: 56,
                             height: 32,
@@ -653,9 +733,19 @@ export default function Home() {
                             fontSize: 22,
                             fontWeight: 700,
                             cursor: 'pointer',
-                            transition: 'background 0.2s',
+                            transition: 'all 0.3s ease',
                             padding: 0,
                             outline: 'none',
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-4px)';
+                            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                            e.currentTarget.style.background = '#5a959a';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                            e.currentTarget.style.background = '#4C858A';
                           }}
                           aria-label={isPlaying ? 'Pause' : 'Play'}
                         >
@@ -731,14 +821,14 @@ export default function Home() {
                       marginBottom: '10px',
                       color: '#e0e0e0',
                     }}>
-                      Step into a world of depth, emotion, and tension with Cinematic Atmospheres, a meticulously crafted sample pack designed for film scoring, game soundtracks, ambient music, and atmospheric productions.
+                      Step into a world of depth, emotion, and tension with Cinematic Atmos, a meticulously crafted sample pack designed for film scoring, game soundtracks, ambient music, and atmospheric productions.
                     </p>
                     <p style={{
                       fontWeight: 400,
                       marginBottom: '20px',
                       color: '#e0e0e0',
                     }}>
-                      Every sound is professionally designed to spark creativity, offering both warmth and edge. Whether you're building an expansive movie score, an eerie game level, or a dreamy ambient track, Cinematic Atmospheres gives you the tools to shape unforgettable sonic worlds.
+                      Every sound is professionally designed to spark creativity, offering both warmth and edge. Whether you're building an expansive movie score, an eerie game level, or a dreamy ambient track, Cinematic Atmos gives you the tools to shape unforgettable sonic worlds.
                     </p>
 
                     <div style={{ marginBottom: '20px' }}>
@@ -803,21 +893,46 @@ export default function Home() {
                             marginRight: '12px'
                           }}
                         />
-                        <button
-                          type="submit"
-                          style={{
-                            padding: '8px 24px',
-                            borderRadius: 25,
-                            border: 'none',
-                            background: '#4C858A',
-                            color: 'white',
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '24px' }}>
+                          <button
+                            type="submit"
+                            style={{
+                              padding: '8px 24px',
+                              borderRadius: 25,
+                              border: '2px solid rgba(255, 255, 255, 0.1)',
+                              background: '#4C858A',
+                              color: 'white',
+                              fontWeight: 'bold',
+                              cursor: 'pointer',
+                              transition: 'all 0.3s ease',
+                            }}
+                            disabled={loading}
+                            onMouseEnter={(e) => {
+                              if (!loading) {
+                                e.currentTarget.style.transform = 'translateY(-4px)';
+                                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                                e.currentTarget.style.background = '#5a959a';
+                              }
+                            }}
+                            onMouseLeave={(e) => {
+                              if (!loading) {
+                                e.currentTarget.style.transform = 'translateY(0)';
+                                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                                e.currentTarget.style.background = '#4C858A';
+                              }
+                            }}
+                          >
+                            Download
+                          </button>
+                          <span style={{ 
+                            color: '#4C858A', 
                             fontWeight: 'bold',
-                            cursor: 'pointer'
-                          }}
-                          disabled={loading}
-                        >
-                          Download
-                        </button>
+                            fontSize: '16px',
+                            letterSpacing: '1px'
+                          }}>
+                            Free
+                          </span>
+                        </div>
                         {/* Hidden download link for auto-download */}
                         <a
                           href={SAMPLE_PACK_URL}
@@ -992,7 +1107,7 @@ export default function Home() {
               WebkitTextStroke: '2px black',
               textShadow: '0 4px 24px rgba(0,0,0,0.8)',
               zIndex: 10,
-              fontFamily: "'Orbitron', Arial, sans-serif",
+              fontFamily: "'Montserrat', Arial, sans-serif",
               letterSpacing: 2,
               lineHeight: 1.1,
               userSelect: 'none',
@@ -1017,7 +1132,7 @@ export default function Home() {
                 style={{
                   padding: '10px 24px',
                   borderRadius: 25,
-                  border: 'none',
+                  border: '2px solid rgba(255, 255, 255, 0.1)',
                   background: currentView === 'samples' ? '#fff' : '#eaeaea',
                   color: '#222222',
                   fontWeight: 'bold',
@@ -1028,6 +1143,16 @@ export default function Home() {
                   letterSpacing: '1px',
                   boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
                 }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                  e.currentTarget.style.background = currentView === 'samples' ? '#ffffff' : '#f5f5f5';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.background = currentView === 'samples' ? '#fff' : '#eaeaea';
+                }}
               >
                 Sample Packs
               </button>
@@ -1036,7 +1161,7 @@ export default function Home() {
                 style={{
                   padding: '10px 24px',
                   borderRadius: 25,
-                  border: 'none',
+                  border: '2px solid rgba(255, 255, 255, 0.1)',
                   background: currentView === 'about' ? '#fff' : '#eaeaea',
                   color: '#222222',
                   fontWeight: 'bold',
@@ -1047,6 +1172,16 @@ export default function Home() {
                   letterSpacing: '1px',
                   boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
                 }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                  e.currentTarget.style.background = currentView === 'about' ? '#ffffff' : '#f5f5f5';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.background = currentView === 'about' ? '#fff' : '#eaeaea';
+                }}
               >
                 About Us
               </button>
@@ -1055,7 +1190,7 @@ export default function Home() {
                 style={{
                   padding: '10px 24px',
                   borderRadius: 25,
-                  border: 'none',
+                  border: '2px solid rgba(255, 255, 255, 0.1)',
                   background: '#eaeaea',
                   color: '#222222',
                   fontWeight: 'bold',
@@ -1065,6 +1200,16 @@ export default function Home() {
                   fontSize: '14px',
                   letterSpacing: '1px',
                   boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                  e.currentTarget.style.background = '#f5f5f5';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.background = '#eaeaea';
                 }}
               >
                 Feedback
