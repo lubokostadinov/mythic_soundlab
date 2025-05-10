@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const supabase = createClient(
   'https://grxandvmphfzepoqtbtp.supabase.co',
@@ -723,154 +724,186 @@ export default function Home() {
   };
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100vw',
-      height: '100vh',
-      overflow: 'hidden',
-      backgroundColor: 'black',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
+    <>
+      <Head>
+        <meta name="viewport" content="width=1920, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+      </Head>
       <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'black',
+        zIndex: -1,
+      }} />
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: '50%',
+        transform: 'translateX(-50%)',
         width: '1920px',
         height: '1080px',
-        position: 'relative',
         overflow: 'hidden',
-        backgroundImage: `url(${BACKGROUND_IMAGE_URL})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        transform: 'scale(1)',
-        transformOrigin: 'center center',
+        backgroundColor: 'black',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        touchAction: 'none',
+        overscrollBehavior: 'none',
+        WebkitTextSizeAdjust: 'none',
+        WebkitTouchCallout: 'none',
+        WebkitUserSelect: 'none',
+        userSelect: 'none',
         willChange: 'transform',
-        margin: 0,
-        padding: 0,
+        minWidth: '1920px',
+        minHeight: '1080px',
       }}>
-        {/* Logo */}
-        <Image
-          src="https://grxandvmphfzepoqtbtp.supabase.co/storage/v1/object/public/sample-packs//mythic_logo_alpha.png"
-          alt="Mythic Soundlab Logo"
-          width={160}
-          height={160}
-          style={{
-            position: 'absolute',
-            top: 103,
-            left: 20,
-            height: 160,
-            width: 'auto',
-            zIndex: 100,
-            display: 'block',
-            pointerEvents: 'none',
-          }}
-        />
-
-        {/* Company name */}
         <div style={{
-          position: 'absolute',
-          top: 155,
-          right: 48,
-          fontSize: 48,
-          color: 'white',
-          WebkitTextStroke: '2px black',
-          textShadow: '0 4px 24px rgba(0,0,0,0.8)',
-          zIndex: 10,
-          fontFamily: "'Orbitron', Arial, sans-serif",
-          letterSpacing: 2,
-          lineHeight: 1.1,
+          width: '1920px',
+          height: '1080px',
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundImage: `url(${BACKGROUND_IMAGE_URL})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          transform: 'none',
+          transformOrigin: 'top center',
+          willChange: 'transform',
+          margin: 0,
+          padding: 0,
+          touchAction: 'none',
+          overscrollBehavior: 'none',
+          WebkitTextSizeAdjust: 'none',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
           userSelect: 'none',
-          fontWeight: 900,
-          textTransform: 'uppercase'
+          minWidth: '1920px',
+          minHeight: '1080px',
         }}>
-          Mythic Soundlab
-        </div>
+          {/* Logo */}
+          <Image
+            src="https://grxandvmphfzepoqtbtp.supabase.co/storage/v1/object/public/sample-packs//mythic_logo_alpha.png"
+            alt="Mythic Soundlab Logo"
+            width={160}
+            height={160}
+            style={{
+              position: 'absolute',
+              top: 103,
+              left: 20,
+              height: 160,
+              width: 'auto',
+              zIndex: 100,
+              display: 'block',
+              pointerEvents: 'none',
+            }}
+          />
 
-        {/* Navigation Menu */}
-        <div style={{
-          position: 'absolute',
-          left: 200,
-          top: 160, // Moved down from 140 to 150
-          display: 'flex',
-          flexDirection: 'row',
-          gap: '12px',
-          zIndex: 20,
-        }}>
-          <button
-            onClick={() => setCurrentView('samples')}
-            style={{
-              padding: '10px 24px',
-              borderRadius: 25,
-              border: 'none',
-              background: currentView === 'samples' ? '#fff' : '#eaeaea',
-              color: '#222222',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              textTransform: 'uppercase',
-              fontSize: '14px',
-              letterSpacing: '1px',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-            }}
-          >
-            Sample Packs
-          </button>
-          <button
-            onClick={() => setCurrentView('about')}
-            style={{
-              padding: '10px 24px',
-              borderRadius: 25,
-              border: 'none',
-              background: currentView === 'about' ? '#fff' : '#eaeaea',
-              color: '#222222',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              textTransform: 'uppercase',
-              fontSize: '14px',
-              letterSpacing: '1px',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-            }}
-          >
-            About Us
-          </button>
-          <button
-            onClick={openFeedbackForm}
-            style={{
-              padding: '10px 24px',
-              borderRadius: 25,
-              border: 'none',
-              background: '#eaeaea',
-              color: '#222222',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              textTransform: 'uppercase',
-              fontSize: '14px',
-              letterSpacing: '1px',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-            }}
-          >
-            Feedback
-          </button>
-        </div>
+          {/* Company name */}
+          <div style={{
+            position: 'absolute',
+            top: 155,
+            right: 48,
+            fontSize: 48,
+            color: 'white',
+            WebkitTextStroke: '2px black',
+            textShadow: '0 4px 24px rgba(0,0,0,0.8)',
+            zIndex: 10,
+            fontFamily: "'Orbitron', Arial, sans-serif",
+            letterSpacing: 2,
+            lineHeight: 1.1,
+            userSelect: 'none',
+            fontWeight: 900,
+            textTransform: 'uppercase'
+          }}>
+            Mythic Soundlab
+          </div>
 
-        {/* Main Content Area */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '90%',
-          maxWidth: 1400,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-          {renderContent()}
+          {/* Navigation Menu */}
+          <div style={{
+            position: 'absolute',
+            left: 200,
+            top: 160, // Moved down from 140 to 150
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '12px',
+            zIndex: 20,
+          }}>
+            <button
+              onClick={() => setCurrentView('samples')}
+              style={{
+                padding: '10px 24px',
+                borderRadius: 25,
+                border: 'none',
+                background: currentView === 'samples' ? '#fff' : '#eaeaea',
+                color: '#222222',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                textTransform: 'uppercase',
+                fontSize: '14px',
+                letterSpacing: '1px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+              }}
+            >
+              Sample Packs
+            </button>
+            <button
+              onClick={() => setCurrentView('about')}
+              style={{
+                padding: '10px 24px',
+                borderRadius: 25,
+                border: 'none',
+                background: currentView === 'about' ? '#fff' : '#eaeaea',
+                color: '#222222',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                textTransform: 'uppercase',
+                fontSize: '14px',
+                letterSpacing: '1px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+              }}
+            >
+              About Us
+            </button>
+            <button
+              onClick={openFeedbackForm}
+              style={{
+                padding: '10px 24px',
+                borderRadius: 25,
+                border: 'none',
+                background: '#eaeaea',
+                color: '#222222',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                textTransform: 'uppercase',
+                fontSize: '14px',
+                letterSpacing: '1px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+              }}
+            >
+              Feedback
+            </button>
+          </div>
+
+          {/* Main Content Area */}
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '90%',
+            maxWidth: 1400,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+            {renderContent()}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
